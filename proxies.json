@@ -1,4 +1,16 @@
 {
   "$schema": "http://json.schemastore.org/proxies",
-  "proxies": {}
+  "proxies": {
+      "Root" : {
+          "matchCondition": {
+              "methods": [ "GET" ],
+              "route": "/"
+          },
+          "backendUri": "https://covid-self-redirect.azurewebsites.net/api/SelfCovidRedirect",
+          "responseOverrides": {
+              "response.statusCode": "302",
+              "response.headers.Location" : "https://covid19.nj.gov/forms/self"
+          }
+      }
+  }
 }
